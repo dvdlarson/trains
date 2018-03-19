@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="60">
+    <title>Trains!</title>
+
+    <!-- Bootstrap, jquery, datatables -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="./assets/js/sorttable.js"></script>
+  
+
+    <!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <!-- Moment.js Reference -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  </head>
+<body>
+
+
+    
+    <div class="container schedule">
+        <div id="jumbotitle" class="jumbotron text-center">
+                <h1>Train Central</h1>
+                <h3>Thanks for choo choo choosing us for your info.</h3>
+        </div>
+        <div class="row">
+            <div  id="admin">
+                    <form class="form-inline" >
+                        <div class="form-group">
+                          <label for="adminID">Admin User ID:</label>
+                          <input type="text" class="form-control" id="adminID">
+                        </div>
+                        <div class="form-group">
+                          <label for="adminPwd">Password:</label>
+                          <input type="text" class="form-control" id="adminPwd">
+                        </div>
+                        <button type="submit" id="adminButton" class="btn btn-default">Submit</button>
+                      </form> 
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="schedule-title text-center">Current Train Schedule</h3>
+                        <h5 class="text-center">Refreshes every 60 seconds. Click a column heading to sort</h5>
+                    </div>
+                    <div class="panel-body">
+                        <table class="sortable" id="schedule">
+                            <thead>
+                                <tr>
+                                    <th class="col-xs-3">Train Name</th>
+                                                        
+                                    <th class="col-xs-3">Destination</th>
+                                
+                                    <th id="nextArrival" class="col-xs-3">Next Arrival</th>
+                                
+                                    <th class="col-xs-3">Minutes Remaining</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleRows">
+
+                            </tbody>
+                        </table>
+
+
+                    </div> <!--panel body-->
+                </div> <!--panel main-->
+            </div><!--column-->
+        </div><!--row-->
+    </div><!--container-->
+    
+    <div id="adminPanel"  class="container add-train">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3>Train Administration - Add train</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label for="name-input">Train Name</label>
+                                <input type="text" class="form-control" id="name-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="dest-input">Destination</label>
+                                <input type="text" class="form-control" id="dest-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="first-train">First Train Time (HH:MM - 24 hr military time)</label>
+                                <input type="text" class="form-control" id="first-train">
+                            </div>
+                            <div class="form-group">
+                                <label for="freq-input">Frequency (mins)</label>
+                                <input type="text" class="form-control" id="freq-input">
+                            </div>
+                            <div class="col-md-12" id="submitError"></div>
+                            <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
+                        </form>
+                    </div> <!--panel body-->
+                </div><!--end main panel-->
+            </div><!--end column-->
+        </div><!--end row-->
+    </div> <!--add train container-->
+
+    <script src="./assets/js/trains.js"></script>
+</body>
+</html>
